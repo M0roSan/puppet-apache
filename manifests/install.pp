@@ -2,11 +2,8 @@
 #   installs the base apache packge
 # @example
 #   include apache::install
-class apache::install (
-  $install_name   = $apache::params::install_name,
-  $install_ensure = $apache::params::install_ensure
-) inherits apache::params {
-    package { 'httpd':
-      ensure => present,
+class apache::install {
+    package { "${apache::install_name}":
+      ensure => $apache::install_ensure,
     }
 }
